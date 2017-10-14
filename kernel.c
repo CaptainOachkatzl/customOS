@@ -1,15 +1,10 @@
 #include "drivers/screen.h"
 
-void main() 
-{
-	int position;
-	position = 0x0;
-
-	port_byte_out(0x3d4, 14);
-	position |= port_byte_in(0x3d5) << 8;
-
-	int test = 3;
-
-    /*port_byte_out(0x3d4, 15);
-    position += port_byte_in(0x3d5);*/
+void main() {
+    clear_screen();
+    kprint_at("X", 1, 6);
+    kprint_at("This text spans multiple lines", 75, 10);
+    kprint_at("There is a line\nbreak", 0, 20);
+    kprint("There is a line\nbreak");
+    kprint_at("What happens when we run out of space?", 45, 24);
 }
